@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "simpleDotGame", "simpleDotGame\simpleDotGame.vbproj", "{3BA24B0F-5E5F-4574-B7A3-DE9FD69912F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BA24B0F-5E5F-4574-B7A3-DE9FD69912F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA24B0F-5E5F-4574-B7A3-DE9FD69912F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA24B0F-5E5F-4574-B7A3-DE9FD69912F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA24B0F-5E5F-4574-B7A3-DE9FD69912F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
