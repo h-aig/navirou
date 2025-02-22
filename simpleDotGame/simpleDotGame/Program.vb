@@ -5,9 +5,12 @@ Module Program
         
         dim fillerExperienceChoice as string
         dim userInput as String
+        dim cursorLeftPosition as Integer
+        dim cursorRowPosition as Integer
         
         Console.WriteLine("Experience or skip the sockathon day one filler?")
         Threading.Thread.Sleep(1000)
+        
         Console.WriteLine("Type 1 to experience. Type 2 to skip.")
         Console.WriteLine()
         fillerExperienceChoice = console.ReadLine()
@@ -51,7 +54,7 @@ Module Program
         
         Console.WriteLine("First select a grid size: the larger the grid, the harder and longer it'll be.")
         Threading.Thread.Sleep(2000)
-        'maybe figure out how to type text out character by character?'
+        'maybe figure out how to type text out character by character?
         Console.WriteLine("Every game, you'll start in the centre of the grid.")
         Threading.Thread.Sleep(2000)
         Console.WriteLine("Select a direction using the arrow keys or WASD, and press RETURN to confirm.")
@@ -63,7 +66,18 @@ Module Program
         Console.WriteLine("tldr; there's a hidden square. go find it in the least turns possible. It's a treasure hunt! :)")
         Threading.Thread.Sleep(5000)
         
-        userInput = Nothing
+        console.WriteLine()
+       
+        Console.WriteLine("Press ANY KEY then RETURN to start.")
+        userInput = console.ReadLine()
+        
+        Console.Clear() 
+        ' press m at any time to mute music - need that in there later- if i ever add music?
+            
+            
+        
+        
+        
         
        
         
