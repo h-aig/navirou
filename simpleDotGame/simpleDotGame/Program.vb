@@ -5,8 +5,6 @@ Module Program
         
         dim fillerExperienceChoice as string
         dim userInput as String
-        dim cursorLeftPosition as Integer
-        dim cursorRowPosition as Integer
         
         Console.WriteLine("Experience or skip the sockathon day one filler?")
         Threading.Thread.Sleep(1000)
@@ -72,19 +70,17 @@ Module Program
         userInput = console.ReadLine()
         
         Console.Clear() 
-        ' press m at any time to mute music - need that in there later- if i ever add music?
-            
-            
+        ' press m at any time to mute music - need that in there later. That's if I ever add music.
+        'Console.WriteLine("Which grid size would you like?")
+        ' add grid size choice
         
+        elevenByElevenGrid()
         
-        
-        
-       
-        
-        
-        
-        
-        Console.ReadLine()
     End Sub
+    
+    Sub ElevenByElevenGrid()
+        
+    End Sub
+    
 End Module
 
