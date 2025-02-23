@@ -3,6 +3,8 @@ Imports System
 Module Program
     Sub Main(args As String())
         
+        ElevenByElevenGrid()
+        
         dim fillerExperienceChoice as string
         dim userInput as String
         
@@ -79,6 +81,24 @@ Module Program
     End Sub
     
     Sub ElevenByElevenGrid()
+        
+        for a as Integer = 0 to 10
+        for b as Integer = 0 to 10
+            Console.Write("__")
+            Threading.Thread.Sleep(25)
+            Console.Write("|")
+            
+        Next
+            Console.WriteLine()
+        next
+        
+        Console.ForegroundColor = ConsoleColor.Red
+        Console.SetCursorPosition(15, 5)
+        Console.Write("__")
+        
+        Console.readline()
+        
+        
         
     End Sub
     
