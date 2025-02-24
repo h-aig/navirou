@@ -69,7 +69,7 @@ Module Program
         console.WriteLine()
        
         Console.WriteLine("Press ANY KEY then RETURN to start.")
-        userInput = console.ReadLine()
+        console.ReadLine()
         
         Console.Clear() 
         ' press m at any time to mute music - need that in there later. That's if I ever add music.
@@ -81,6 +81,8 @@ Module Program
     End Sub
     
     Sub ElevenByElevenGrid()
+        
+        
         
         for a as Integer = 0 to 10
         for b as Integer = 0 to 10
@@ -96,10 +98,25 @@ Module Program
         Console.SetCursorPosition(15, 5)
         Console.Write("__")
         
+        Randomize()
+        dim treasureLocationLeft as Integer= Math.Ceiling(Rnd() * 30)
+        dim treasureLocationTop as Integer = Math.Ceiling(Rnd() * 11)
+        
+        do until 
+        
+        Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
+        dim locationValidation(1)
+        locationValidation(0) = Console.Read()
+        
+        Console.SetCursorPosition(1000, 1000)
+        
+        
+        Console.Writeline(locationValidation(0))
+        
+         loop
+
         Console.readline()
-        
-        
-        
+
     End Sub
     
 End Module
