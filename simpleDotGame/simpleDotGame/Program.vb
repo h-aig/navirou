@@ -83,38 +83,52 @@ Module Program
     Sub ElevenByElevenGrid()
         
         
-        
+        console.WriteLine()
+        Console.Write(" ")
         for a as Integer = 0 to 10
         for b as Integer = 0 to 10
             Console.Write("__")
-            Threading.Thread.Sleep(25)
+            Threading.Thread.Sleep(10)
             Console.Write("|")
             
         Next
             Console.WriteLine()
+            Console.Write(" ")
         next
         
         Console.ForegroundColor = ConsoleColor.Red
-        Console.SetCursorPosition(15, 5)
+        Console.SetCursorPosition(16, 6)
         Console.Write("__")
         
-        Randomize()
-        dim treasureLocationLeft as Integer= Math.Ceiling(Rnd() * 30)
-        dim treasureLocationTop as Integer = Math.Ceiling(Rnd() * 11)
+        dim treasureLocationOkay as Boolean = False
+        dim treasureLocationTop as Integer 
+        dim treasureLocationLeft as Integer
         
-        do until 
+        Console.ForegroundColor = ConsoleColor.Yellow
         
-        Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
-        dim locationValidation(1)
-        locationValidation(0) = Console.Read()
+        do until treasureLocationOkay = True
+            
+            Randomize()
+            treasureLocationLeft= Math.Ceiling(Rnd() * 30)
+            Randomize()
+            treasureLocationTop = Math.Ceiling(Rnd() * 10)
+            
+            
+            if treasureLocationLeft mod 3 <> 0 and (treasureLocationLeft + 1) mod 3 <> 0
+                treasureLocationOkay = true
+            End If
+           
+            if treasureLocationLeft mod 3 = 0 
+                treasureLocationOkay = False
+            End If
+            
+        Loop
+            
+            Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
+            Console.Write("__")
         
-        Console.SetCursorPosition(1000, 1000)
         
         
-        Console.Writeline(locationValidation(0))
-        
-         loop
-
         Console.readline()
 
     End Sub
