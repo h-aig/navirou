@@ -15,7 +15,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("simpleDotGame"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8eff74b15719cfc363e1a1228aa8563b5a007fc"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f59e29d58977a6ab7aa4a4c83c077b4c5b17299"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("simpleDotGame"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("simpleDotGame"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")> 

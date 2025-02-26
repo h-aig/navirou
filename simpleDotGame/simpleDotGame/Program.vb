@@ -68,8 +68,8 @@ Module Program
         
         console.WriteLine()
        
-        Console.WriteLine("Press ANY KEY then RETURN to start.")
-        console.ReadLine()
+        Console.WriteLine("Please set the window size to large enough to fit the following line across so the grid works; after, press ANY KEY then RETURN to start.")
+        ' this will be a line
         
         Console.Clear() 
         ' press m at any time to mute music - need that in there later. That's if I ever add music.
@@ -82,6 +82,7 @@ Module Program
     
     Sub ElevenByElevenGrid()
         
+        'sound effects whilst building grid?
         
         console.WriteLine()
         Console.Write(" ")
@@ -108,6 +109,7 @@ Module Program
         
         do until treasureLocationOkay = True
             
+            
             Randomize()
             treasureLocationLeft= Math.Ceiling(Rnd() * 30)
             Randomize()
@@ -121,11 +123,12 @@ Module Program
             if treasureLocationLeft mod 3 = 0 
                 treasureLocationOkay = False
             End If
-            
-        Loop
+                
             
             Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
             Console.Write("__")
+        
+        ' find a way to force the terminal window to adjust so the grid is forced to be the right size for it to work?
         
         
         
