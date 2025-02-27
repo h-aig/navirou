@@ -69,7 +69,7 @@ Module Program
         console.WriteLine()
        
         Console.WriteLine("Please set the window size to large enough to fit the following line across so the grid works; after, press ANY KEY then RETURN to start.")
-        ' this will be a line
+        ' this will be a line, no idea how to handle these exceptions :( can't force except on windows, bad things will happen.
         
         Console.Clear() 
         ' press m at any time to mute music - need that in there later. That's if I ever add music.
@@ -124,11 +124,37 @@ Module Program
                 treasureLocationOkay = False
             End If
                 
-            
+            loop
+        
             Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
             Console.Write("__")
+        ' REMOVE THE ABOVE LATER
         
-        ' find a way to force the terminal window to adjust so the grid is forced to be the right size for it to work?
+        'dim userDirection = Console.ReadKey()
+        dim treasureFound as boolean = false
+        Dim moveNumber As Integer = 0
+        Dim numberOfSquaresAway as Integer
+        
+        
+        
+        do until treasureFound = True
+            
+            numberOfSquaresAway = 
+            
+            Console.ForegroundColor = ConsoleColor.cyan
+            Console.SetCursorPosition(1, 14)
+            Console.WriteLine("Move number: " & moveNumber)
+            moveNumber = moveNumber + 1
+            
+            Console.ForegroundColor = ConsoleColor.Blue
+            Console.SetCursorPosition(1, 15)
+            Console.WriteLine("No. squares away: " & numberOfSquaresAway)
+            
+            
+            
+        Loop
+        
+         
         
         
         
@@ -138,3 +164,11 @@ Module Program
     
 End Module
 
+' i should add a timer lol do until treasureFound = True
+            
+'Console.ForegroundColor = ConsoleColor.cyan
+'Console.SetCursorPosition(1, 14)
+'Console.WriteLine("Move number: " & moveNumber)
+'moveNumber = moveNumber + 1
+            
+'Loop
