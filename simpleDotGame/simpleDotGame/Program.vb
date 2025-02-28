@@ -206,7 +206,7 @@ Module Program
             if trueTreasureLocationTop > trueUserLocationTop
                 noSquaresAwayTop = trueTreasureLocationTop - trueUserLocationTop
             else
-                noSquaresAwayLeft = trueUserLocationTop - trueTreasureLocationTop
+                noSquaresAwayTop = trueUserLocationTop - trueTreasureLocationTop
             End If
             
             numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
