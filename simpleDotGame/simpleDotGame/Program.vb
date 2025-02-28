@@ -134,12 +134,82 @@ Module Program
         dim treasureFound as boolean = false
         Dim moveNumber As Integer = 0
         Dim numberOfSquaresAway as Integer
+        dim trueTreasureLocationLeft as Integer 
+        dim trueTreasureLocationTop as Integer
+        dim userLocationLeft as Integer = 16
+        dim userLocationTop as Integer = 6
+        dim trueUserLocationLeft as Integer
+        dim trueUserLocationTop as Integer
+        dim noSquaresAwayLeft as Integer = Nothing
+        dim noSquaresAwayTop as Integer = Nothing
         
-        
+        If treasureLocationLeft = 1 or treasureLocationLeft = 2
+            trueTreasureLocationLeft = 1
+        ElseIf treasureLocationLeft = 4 or treasureLocationLeft = 5
+            trueTreasureLocationLeft = 2
+        ElseIf treasureLocationLeft = 7 or treasureLocationLeft = 8
+            trueTreasureLocationLeft = 3
+        ElseIf treasureLocationLeft = 10 or treasureLocationLeft = 11
+            trueTreasureLocationLeft = 4
+        ElseIf treasureLocationLeft = 13 or treasureLocationLeft = 14
+            trueTreasureLocationLeft = 5
+        ElseIf treasureLocationLeft = 16 or treasureLocationLeft = 17
+            trueTreasureLocationLeft = 6
+        ElseIf treasureLocationLeft = 19 or treasureLocationLeft = 20
+            trueTreasureLocationLeft = 7
+        ElseIf  treasureLocationLeft = 22 or treasureLocationLeft = 23
+            trueTreasureLocationLeft = 8
+        ElseIf treasureLocationLeft = 25 or treasureLocationLeft = 26
+            trueTreasureLocationLeft = 9
+        ElseIf treasureLocationLeft = 28 or treasureLocationLeft = 29
+            trueTreasureLocationLeft = 10
+        ElseIf treasureLocationLeft = 31 or treasureLocationLeft = 32
+            trueTreasureLocationLeft = 11
+        End If
+            
+        trueTreasureLocationTop = treasureLocationtop
         
         do until treasureFound = True
             
-            numberOfSquaresAway = 
+            If UserLocationLeft = 1 or UserLocationLeft = 2
+                trueUserLocationLeft = 1
+            ElseIf UserLocationLeft = 4 or UserLocationLeft = 5
+                trueUserLocationLeft = 2
+            ElseIf UserLocationLeft = 7 or UserLocationLeft = 8
+                trueUserLocationLeft = 3
+            ElseIf UserLocationLeft = 10 or UserLocationLeft = 11
+                trueUserLocationLeft = 4
+            ElseIf UserLocationLeft = 13 or UserLocationLeft = 14
+                trueUserLocationLeft = 5
+            ElseIf UserLocationLeft = 16 or UserLocationLeft = 17
+                trueUserLocationLeft = 6
+            ElseIf UserLocationLeft = 19 or UserLocationLeft = 20
+                trueUserLocationLeft = 7
+            ElseIf  UserLocationLeft = 22 or UserLocationLeft = 23
+                trueUserLocationLeft = 8
+            ElseIf UserLocationLeft = 25 or UserLocationLeft = 26
+                trueUserLocationLeft = 9
+            ElseIf UserLocationLeft = 28 or UserLocationLeft = 29
+                trueUserLocationLeft = 10
+            ElseIf UserLocationLeft = 31 or UserLocationLeft = 32
+                trueUserLocationLeft = 11
+            End If
+            
+            trueUserLocationTop = UserLocationTop
+            
+            if trueTreasureLocationLeft > trueUserLocationLeft 
+                noSquaresAwayLeft = trueTreasureLocationLeft - trueUserLocationLeft
+                else
+                    noSquaresAwayLeft = trueUserLocationLeft - trueTreasureLocationLeft
+            End If
+            
+            if trueTreasureLocationTop > trueUserLocationTop
+                noSquaresAwayTop = trueTreasureLocationTop - trueUserLocationTop
+            else
+                noSquaresAwayLeft = trueUserLocationTop - trueTreasureLocationTop
+            End If
+            
+            numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
             Console.ForegroundColor = ConsoleColor.cyan
             Console.SetCursorPosition(1, 14)
@@ -148,8 +218,19 @@ Module Program
             
             Console.ForegroundColor = ConsoleColor.Blue
             Console.SetCursorPosition(1, 15)
-            Console.WriteLine("No. squares away: " & numberOfSquaresAway)
             
+            if numberOfSquaresAway > -(numberOfSquaresAway)
+            Console.WriteLine("No. squares away: " &  numberOfSquaresAway)
+                Else 
+                    Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway))
+            End If
+                    
+            Console.WriteLine("trueUserLocationLeft: " & trueUserLocationLeft)
+            Console.WriteLine("trueUserLocationTop: " & trueUserLocationTop)
+            Console.WriteLine("trueTreasureLocationLeft: " & trueTreasureLocationLeft)
+            Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop)
+            
+            Console.ReadLine()
             
             
         Loop
