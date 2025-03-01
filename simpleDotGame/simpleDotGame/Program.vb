@@ -224,14 +224,19 @@ Module Program
                 Else 
                     Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway))
             End If
-                    
+                 
+            ' remove below here
             Console.WriteLine("trueUserLocationLeft: " & trueUserLocationLeft)
             Console.WriteLine("trueUserLocationTop: " & trueUserLocationTop)
             Console.WriteLine("trueTreasureLocationLeft: " & trueTreasureLocationLeft)
             Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop)
+            ' remove above here
+            
+            
+            Dim keyInfo = Console.ReadKey().Key
+            Console.WriteLine(keyInfo)
             
             Console.ReadLine()
-            
             
         Loop
         
