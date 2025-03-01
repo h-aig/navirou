@@ -232,9 +232,19 @@ Module Program
             Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop)
             ' remove above here
             
+            dim userDirection as Integer
             
-            Dim keyInfo = Console.ReadKey().Key
-            Console.WriteLine(keyInfo)
+             userDirection = Console.ReadKey().Key
+                 
+            if userDirection = 87 or 38
+                
+                elseif userDirection = 65 or 37
+                    
+                    ElseIf userDirection = 83 or 40
+                        
+                        elseif 68 or 39
+                            
+            End If
             
             Console.ReadLine()
             
