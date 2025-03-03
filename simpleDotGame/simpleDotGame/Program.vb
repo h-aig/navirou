@@ -82,6 +82,7 @@ Module Program
     
     Sub ElevenByElevenGrid()
         
+        Console.ForegroundColor = ConsoleColor.White
         'sound effects whilst building grid?
         
         console.WriteLine()
@@ -142,6 +143,8 @@ Module Program
         dim trueUserLocationTop as Integer
         dim noSquaresAwayLeft as Integer = Nothing
         dim noSquaresAwayTop as Integer = Nothing
+        dim userDirection as Integer
+        
         
         If treasureLocationLeft = 1 or treasureLocationLeft = 2
             trueTreasureLocationLeft = 1
@@ -169,33 +172,37 @@ Module Program
             
         trueTreasureLocationTop = treasureLocationtop
         
+        If UserLocationLeft = 1 or UserLocationLeft = 2
+            trueUserLocationLeft = 1
+        ElseIf UserLocationLeft = 4 or UserLocationLeft = 5
+            trueUserLocationLeft = 2
+        ElseIf UserLocationLeft = 7 or UserLocationLeft = 8
+            trueUserLocationLeft = 3
+        ElseIf UserLocationLeft = 10 or UserLocationLeft = 11
+            trueUserLocationLeft = 4
+        ElseIf UserLocationLeft = 13 or UserLocationLeft = 14
+            trueUserLocationLeft = 5
+        ElseIf UserLocationLeft = 16 or UserLocationLeft = 17
+            trueUserLocationLeft = 6
+        ElseIf UserLocationLeft = 19 or UserLocationLeft = 20
+            trueUserLocationLeft = 7
+        ElseIf  UserLocationLeft = 22 or UserLocationLeft = 23
+            trueUserLocationLeft = 8
+        ElseIf UserLocationLeft = 25 or UserLocationLeft = 26
+            trueUserLocationLeft = 9
+        ElseIf UserLocationLeft = 28 or UserLocationLeft = 29
+            trueUserLocationLeft = 10
+        ElseIf UserLocationLeft = 31 or UserLocationLeft = 32
+            trueUserLocationLeft = 11
+        End If
+            
+        trueUserLocationTop = UserLocationTop
+        
+      dim firstmove as Boolean = false
+        
+        
+        
         do until treasureFound = True
-            
-            If UserLocationLeft = 1 or UserLocationLeft = 2
-                trueUserLocationLeft = 1
-            ElseIf UserLocationLeft = 4 or UserLocationLeft = 5
-                trueUserLocationLeft = 2
-            ElseIf UserLocationLeft = 7 or UserLocationLeft = 8
-                trueUserLocationLeft = 3
-            ElseIf UserLocationLeft = 10 or UserLocationLeft = 11
-                trueUserLocationLeft = 4
-            ElseIf UserLocationLeft = 13 or UserLocationLeft = 14
-                trueUserLocationLeft = 5
-            ElseIf UserLocationLeft = 16 or UserLocationLeft = 17
-                trueUserLocationLeft = 6
-            ElseIf UserLocationLeft = 19 or UserLocationLeft = 20
-                trueUserLocationLeft = 7
-            ElseIf  UserLocationLeft = 22 or UserLocationLeft = 23
-                trueUserLocationLeft = 8
-            ElseIf UserLocationLeft = 25 or UserLocationLeft = 26
-                trueUserLocationLeft = 9
-            ElseIf UserLocationLeft = 28 or UserLocationLeft = 29
-                trueUserLocationLeft = 10
-            ElseIf UserLocationLeft = 31 or UserLocationLeft = 32
-                trueUserLocationLeft = 11
-            End If
-            
-            trueUserLocationTop = UserLocationTop
             
             if trueTreasureLocationLeft > trueUserLocationLeft 
                 noSquaresAwayLeft = trueTreasureLocationLeft - trueUserLocationLeft
@@ -232,35 +239,86 @@ Module Program
             Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop)
             ' remove above here
             
-            dim userDirection as Integer
             
-             userDirection = Console.ReadKey().Key
-                 
-            if userDirection = 87 or 38
-                
-                elseif userDirection = 65 or 37
-                    
-                    ElseIf userDirection = 83 or 40
-                        
-                        elseif 68 or 39
-                            
+            
+            userDirection = Console.ReadKey().Key
+            
+            if firstmove = true
+            Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
+            Console.ForegroundColor = ConsoleColor.White
+            Console.Write("__")
+                Else 
+                    Console.SetCursorPosition(userLocationLeft, userLocationTop)
+                    Console.ForegroundColor = ConsoleColor.White
+                    Console.Write("__")
             End If
             
-            Console.ReadLine()
+            firstmove = true
+            
+            If userDirection = ConsoleKey.W OrElse userDirection = ConsoleKey.UpArrow Then ' up
+                userLocationTop = userLocationTop - 1
+            ElseIf userDirection = ConsoleKey.A OrElse userDirection = ConsoleKey.LeftArrow Then ' left
+                userLocationLeft = userLocationLeft - 3
+            ElseIf userDirection = ConsoleKey.S OrElse userDirection = ConsoleKey.DownArrow Then ' down
+                userLocationTop = userLocationTop + 1
+            ElseIf userDirection = ConsoleKey.D OrElse userDirection = ConsoleKey.RightArrow Then ' right
+                userLocationLeft = userLocationLeft + 2
+            End If
+            
+            
+            
+            If UserLocationLeft = 1 or UserLocationLeft = 2
+                trueUserLocationLeft = 1
+                UserLocationLeft = 2
+            ElseIf UserLocationLeft = 4 or UserLocationLeft = 5
+                trueUserLocationLeft = 2
+                UserLocationLeft = 5
+            ElseIf UserLocationLeft = 7 or UserLocationLeft = 8
+                trueUserLocationLeft = 3
+                UserLocationLeft = 8
+            ElseIf UserLocationLeft = 10 or UserLocationLeft = 11
+                trueUserLocationLeft = 4
+                UserLocationLeft = 11
+            ElseIf UserLocationLeft = 13 or UserLocationLeft = 14
+                trueUserLocationLeft = 5
+                UserLocationLeft = 14
+            ElseIf UserLocationLeft = 16 or UserLocationLeft = 17
+                trueUserLocationLeft = 6
+                UserLocationLeft = 17
+            ElseIf UserLocationLeft = 19 or UserLocationLeft = 20
+                trueUserLocationLeft = 7
+                UserLocationLeft = 20
+            ElseIf  UserLocationLeft = 22 or UserLocationLeft = 23
+                trueUserLocationLeft = 8
+                UserLocationLeft = 23
+            ElseIf UserLocationLeft = 25 or UserLocationLeft = 26
+                trueUserLocationLeft = 9
+                UserLocationLeft = 26
+            ElseIf UserLocationLeft = 28 or UserLocationLeft = 29
+                trueUserLocationLeft = 10
+                UserLocationLeft = 29
+            ElseIf UserLocationLeft = 31 or UserLocationLeft = 32
+                trueUserLocationLeft = 11
+                UserLocationLeft = 32
+            End If
+            
+            trueUserLocationTop = UserLocationTop
+            
+            
+            
+           Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
+            Console.ForegroundColor = ConsoleColor.Cyan
+            Console.Write("__")
             
         Loop
         
-         
-        
-        
-        
-        Console.readline()
+        Console.ReadLine()
 
     End Sub
     
 End Module
 
-' i should add a timer lol do until treasureFound = True
+' I should add a timer lol do until treasureFound = True
             
 'Console.ForegroundColor = ConsoleColor.cyan
 'Console.SetCursorPosition(1, 14)
