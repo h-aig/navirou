@@ -198,8 +198,7 @@ Module Program
             
         trueUserLocationTop = UserLocationTop
         
-      dim firstmove as Boolean = false
-        
+      dim firstmove as Boolean = true
         
         
         do until treasureFound = True
@@ -232,6 +231,8 @@ Module Program
                     Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway))
             End If
                  
+            
+            
             ' remove below here
             Console.WriteLine("trueUserLocationLeft: " & trueUserLocationLeft)
             Console.WriteLine("trueUserLocationTop: " & trueUserLocationTop)
@@ -239,21 +240,19 @@ Module Program
             Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop)
             ' remove above here
             
-            
-            
             userDirection = Console.ReadKey().Key
             
             if firstmove = true
-            Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
-            Console.ForegroundColor = ConsoleColor.White
-            Console.Write("__")
+                Console.SetCursorPosition(userLocationLeft, userLocationTop)
+                Console.ForegroundColor = ConsoleColor.White
+                Console.Write("__")
                 Else 
-                    Console.SetCursorPosition(userLocationLeft, userLocationTop)
+                    Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
                     Console.ForegroundColor = ConsoleColor.White
                     Console.Write("__")
-            End If
+                End If
             
-            firstmove = true
+            
             
             If userDirection = ConsoleKey.W OrElse userDirection = ConsoleKey.UpArrow Then ' up
                 userLocationTop = userLocationTop - 1
@@ -304,11 +303,71 @@ Module Program
             
             trueUserLocationTop = UserLocationTop
             
-            
-            
+            if firstmove <> true
+                
            Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
             Console.ForegroundColor = ConsoleColor.Cyan
             Console.Write("__")
+                ElseIf  firstmove = true and userDirection = ConsoleKey.RightArrow 
+                    Console.SetCursorPosition(userLocationLeft + 1, userLocationTop)
+                    Console.ForegroundColor = ConsoleColor.Cyan
+                    Console.Write("__")
+                    
+            ElseIf  firstmove = true and userDirection = ConsoleKey.D
+                Console.SetCursorPosition(userLocationLeft + 1, userLocationTop)
+                Console.ForegroundColor = ConsoleColor.Cyan
+                Console.Write("__")
+                    
+                    ElseIf  firstmove = true
+                        Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
+                        Console.ForegroundColor = ConsoleColor.Cyan
+                        Console.Write("__")
+                    end if 
+            
+            if firstmove = True  and userDirection = ConsoleKey.RightArrow 
+                userLocationLeft = userLocationLeft + 2
+            End If
+            
+            if firstmove = True  and userDirection = ConsoleKey.D
+                userLocationLeft = userLocationLeft + 2
+            End If
+            
+            if trueTreasureLocationLeft > trueUserLocationLeft 
+                noSquaresAwayLeft = trueTreasureLocationLeft - trueUserLocationLeft
+            else
+                noSquaresAwayLeft = trueUserLocationLeft - trueTreasureLocationLeft
+            End If
+            
+           
+            if firstmove = true and userDirection = ConsoleKey.RightArrow
+            
+                trueUserLocationLeft = 7
+                
+            if trueTreasureLocationLeft > trueUserLocationLeft 
+                noSquaresAwayLeft = trueTreasureLocationLeft - trueUserLocationLeft
+            else
+                noSquaresAwayLeft = trueUserLocationLeft - trueTreasureLocationLeft
+            End If
+            
+            if trueTreasureLocationTop > trueUserLocationTop
+                noSquaresAwayTop = trueTreasureLocationTop - trueUserLocationTop
+            else
+                noSquaresAwayTop = trueUserLocationTop - trueTreasureLocationTop
+            End If
+            
+            numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
+            
+                Console.SetCursorPosition(1, 15)
+                
+            if numberOfSquaresAway > -(numberOfSquaresAway)
+                Console.WriteLine("No. squares away: " &  numberOfSquaresAway)
+            Else 
+                Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway))
+            End If
+            
+                End If
+            
+            firstmove = false
             
         Loop
         
