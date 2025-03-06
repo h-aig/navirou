@@ -1,5 +1,8 @@
+Imports Microsoft.VisualBasic
+Imports Microsoft.VisualBasic.Devices
 Imports System
 Imports System.Threading
+
 
 Module Program
     Sub Main(args As String())
@@ -93,6 +96,7 @@ Module Program
             Console.Write("__")
             Threading.Thread.Sleep(10)
             Console.Write("|")
+            
             
         Next
             Console.WriteLine()
