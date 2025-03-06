@@ -226,6 +226,13 @@ Module Program
             
             numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
+            if numberOfSquaresAway = 0 or numberOfSquaresAway = -0 ' ends game
+                for i as Integer = 0 to 999
+                    Console.WriteLine("YOU WIN!")
+                Next
+                End
+            End If
+            
             Console.ForegroundColor = ConsoleColor.cyan
             Console.SetCursorPosition(1, 14)
             Console.WriteLine("Move number: " & moveNumber)
@@ -413,10 +420,10 @@ Module Program
                 
                 Console.SetCursorPosition(1, 20) ' change this to 17 after removing debugging outputs
                 Console.ForegroundColor = ConsoleColor.Red
-                Console.WriteLine("That move would take you out of bounds!")
+                Console.WriteLine("That move would take you out of bounds! Inputs frozen for 1s (stackable with further inputs)!") 'anyone know how to make it precise?
                 Threading.Thread.Sleep(1000)
                 Console.SetCursorPosition(1, 20) ' change this as well!
-                Console.WriteLine("                                       ")
+                Console.WriteLine("                                                                         ")
                 
                 moveNumber = moveNumber - 1
                 ' beep boop incorrect noise??
@@ -424,6 +431,10 @@ Module Program
             End If
             
             firstmove = false
+            
+            
+            
+            
             
         Loop
         
