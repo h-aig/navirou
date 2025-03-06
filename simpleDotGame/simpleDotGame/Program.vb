@@ -1,4 +1,5 @@
 Imports System
+Imports System.Threading
 
 Module Program
     Sub Main(args As String())
@@ -144,7 +145,8 @@ Module Program
         dim noSquaresAwayLeft as Integer = Nothing
         dim noSquaresAwayTop as Integer = Nothing
         dim userDirection as Integer
-        
+        dim goingOutOfBounds as Boolean = false
+        dim outOfBoundsPos(1)
         
         If treasureLocationLeft = 1 or treasureLocationLeft = 2
             trueTreasureLocationLeft = 1
@@ -199,9 +201,11 @@ Module Program
         trueUserLocationTop = UserLocationTop
         
       dim firstmove as Boolean = true
-        
+      dim triggerMovement as boolean = true  
         
         do until treasureFound = True
+            
+            
             
             if trueTreasureLocationLeft > trueUserLocationLeft 
                 noSquaresAwayLeft = trueTreasureLocationLeft - trueUserLocationLeft
@@ -231,7 +235,7 @@ Module Program
                     Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway & " "))
             End If
                  
-            
+                
             
             ' remove below here
             Console.WriteLine("trueUserLocationLeft: " & trueUserLocationLeft & " ")
@@ -255,13 +259,40 @@ Module Program
             
             
             If userDirection = ConsoleKey.W OrElse userDirection = ConsoleKey.UpArrow Then ' up
+                if trueUserLocationTop <> 1
                 userLocationTop = userLocationTop - 1
+                    elseif trueUserLocationTop = 1
+                        goingOutOfBounds = true
+                        outOfBoundsPos(0) = Console.CursorLeft
+                        outOfBoundsPos(1) = Console.CursorTop
+                    End If
             ElseIf userDirection = ConsoleKey.A OrElse userDirection = ConsoleKey.LeftArrow Then ' left
+                if trueUserLocationLeft <> 1
                 userLocationLeft = userLocationLeft - 3
+                elseif trueUserLocationLeft = 1
+                    goingOutOfBounds = true
+                    outOfBoundsPos(0) = Console.CursorLeft
+                    outOfBoundsPos(1) = Console.CursorTop
+                    End If
             ElseIf userDirection = ConsoleKey.S OrElse userDirection = ConsoleKey.DownArrow Then ' down
+                if trueUserLocationTop <> 11
                 userLocationTop = userLocationTop + 1
+                elseif trueUserLocationTop = 11
+                    goingOutOfBounds = true
+                    outOfBoundsPos(0) = Console.CursorLeft
+                    outOfBoundsPos(1) = Console.CursorTop
+                    End If
             ElseIf userDirection = ConsoleKey.D OrElse userDirection = ConsoleKey.RightArrow Then ' right
+                if trueUserLocationLeft <> 11
                 userLocationLeft = userLocationLeft + 2
+                elseif trueUserLocationLeft = 11
+                    goingOutOfBounds = true
+                    outOfBoundsPos(0) = Console.CursorLeft
+                    outOfBoundsPos(1) = Console.CursorTop
+                    End If
+            ElseIf userDirection = consolekey.R
+                Console.Clear()
+                RegenGrid()
             End If
             
             
@@ -303,11 +334,11 @@ Module Program
             
             trueUserLocationTop = UserLocationTop
             
-            if firstmove <> true
-                
+            if firstmove <> true and goingOutOfBounds = false
            Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
             Console.ForegroundColor = ConsoleColor.Cyan
             Console.Write("__")
+
                 ElseIf  firstmove = true and userDirection = ConsoleKey.RightArrow 
                     Console.SetCursorPosition(userLocationLeft + 1, userLocationTop)
                     Console.ForegroundColor = ConsoleColor.Cyan
@@ -364,8 +395,28 @@ Module Program
             Else 
                 Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway))
             End If
+                
+                
             
-                End If
+            End If
+            
+            if goingOutOfBounds = true
+                
+                Console.ForegroundColor = ConsoleColor.Cyan
+                Console.SetCursorPosition(outOfBoundsPos(0) - 2, outOfBoundsPos(1))
+                Console.WriteLine("__")
+                
+                Console.SetCursorPosition(1, 20) ' change this to 17 after removing debugging outputs
+                Console.ForegroundColor = ConsoleColor.Red
+                Console.WriteLine("That move would take you out of bounds!")
+                Threading.Thread.Sleep(1000)
+                Console.SetCursorPosition(1, 20) ' change this as well!
+                Console.WriteLine("                                       ")
+                
+                moveNumber = moveNumber - 1
+                ' beep boop incorrect noise??
+                goingOutOfBounds = false
+            End If
             
             firstmove = false
             
@@ -374,6 +425,11 @@ Module Program
         Console.ReadLine()
 
     End Sub
+    
+    Function RegenGrid
+        ElevenByElevenGrid()
+    End Function
+    
     
 End Module
 
