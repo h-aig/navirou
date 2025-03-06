@@ -86,6 +86,10 @@ Module Program
     
     Sub ElevenByElevenGrid()
         
+        
+        
+        
+        
         Console.ForegroundColor = ConsoleColor.White
         'sound effects whilst building grid?
         
@@ -96,7 +100,7 @@ Module Program
             Console.Write("__")
             Threading.Thread.Sleep(10)
             Console.Write("|")
-            
+        ' wanted to add audio here + during game but the symbol couldn't be resolved for some reason :`(
             
         Next
             Console.WriteLine()
