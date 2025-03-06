@@ -118,13 +118,19 @@ Module Program
             treasureLocationTop = Math.Ceiling(Rnd() * 10)
             
             
-            if treasureLocationLeft mod 3 <> 0 and (treasureLocationLeft + 1) mod 3 <> 0
+            if treasureLocationLeft mod 3 <> 0 and (treasureLocationLeft + 1) mod 3 <> 0 ' makes sure it isn't in a barrier
+                if treasureLocationLeft <> 16 AndAlso treasureLocationTop <> 6 or  treasureLocationLeft <> 17 AndAlso  treasureLocationTop <> 6 ' makes sure it isn't on the user starting position
                 treasureLocationOkay = true
+                    else
+                        treasureLocationOkay = false
+                    End If
+                Else 
+                    treasureLocationOkay = false
             End If
            
-            if treasureLocationLeft mod 3 = 0 
-                treasureLocationOkay = False
-            End If
+          '  if treasureLocationLeft mod 3 = 0 
+           '     treasureLocationOkay = False
+            'End If
                 
             loop
         
@@ -132,7 +138,6 @@ Module Program
             Console.Write("__")
         ' REMOVE THE ABOVE LATER
         
-        'dim userDirection = Console.ReadKey()
         dim treasureFound as boolean = false
         Dim moveNumber As Integer = 0
         Dim numberOfSquaresAway as Integer
