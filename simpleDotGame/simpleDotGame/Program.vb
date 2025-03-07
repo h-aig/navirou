@@ -7,84 +7,79 @@ Imports System.Threading
 Module Program
     Sub Main(args As String())
         
-        ElevenByElevenGrid()
         
-        dim fillerExperienceChoice as string
-        dim userInput as String
+        dim menuOption as Integer
+        dim modeSelector as string = "> start from random seed"
         
-        Console.WriteLine("Experience or skip the sockathon day one filler?")
-        Threading.Thread.Sleep(1000)
         
-        Console.WriteLine("Type 1 to experience. Type 2 to skip.")
+        Console.WriteLine("navirou")
         Console.WriteLine()
-        fillerExperienceChoice = console.ReadLine()
+        Console.WriteLine("import level from seed")
+        Console.WriteLine("> start from random seed")
         
-        do until fillerExperienceChoice = "1" or fillerExperienceChoice = "2"
-            if not fillerExperienceChoice = "1" or not fillerExperienceChoice = "2"
-                Console.WriteLine()
-                Console.WriteLine("Just type a valid number :(")
-                Threading.Thread.Sleep(500)
-                Console.WriteLine("One to experience.")
-                Threading.Thread.Sleep(500)
-                Console.WriteLine("Two to skip.")
-                Console.WriteLine()
-                fillerExperienceChoice = console.ReadLine()
+        do 
+            
+            menuoption = Console.ReadKey().Key
+            
+            if menuOption = ConsoleKey.UpArrow or menuOption = ConsoleKey.W
                 
+                if Console.CursorTop = 3 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("import level from seed")
+                    Console.WriteLine("> start from random seed")
+                    Console.SetCursorPosition(0, 4)
+                    modeSelector = "> start from random seed"
+                elseif Console.CursorTop = 4 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("> import level from seed")
+                    Console.WriteLine(" start from random seed")
+                    Console.SetCursorPosition(0, 3)
+                    modeSelector = "> import level from seed"
+                End If
+        
+            End If
+            
+            if menuOption = ConsoleKey.DownArrow or menuOption = ConsoleKey.S
                 
+                if Console.CursorTop = 3 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("import level from seed")
+                    Console.WriteLine("> start from random seed")
+                    Console.SetCursorPosition(0, 4)
+                    modeSelector = "> start from random seed"
+                ElseIf Console.CursorTop = 4 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("> import level from seed")
+                    Console.WriteLine(" start from random seed")
+                    Console.SetCursorPosition(0, 3)
+                    modeSelector = "> import level from seed"
+                End If
+        
             End If
-        Loop
+            
+        loop until menuOption = ConsoleKey.Enter
         
-        if fillerExperienceChoice = 1
-            Console.WriteLine()
-        Console.WriteLine("Simple. The game. Type 1 to continue.")
-        userInput = console.readline()
+        if modeSelector = "> start from random seed"
+            Console.Clear()
+            RandomelevenByElevenGrid()
+            ElseIf modeSelector = "> import level from seed"
+                Console.Clear()
+                seedElevenByElevenGrid()
+        End If
         
-        do until userInput = "1"
-            if not userInput = "1" 
-        Console.WriteLine("Just type 1...")
-                userInput = console.ReadLine()
-            End If
-        Loop
         
-        Console.WriteLine("")
-        Console.WriteLine("Wasn't that hard, was it? Just like this game")
-        Threading.Thread.Sleep(1000)
-        Console.WriteLine("Simple.")
-            End If
-        
-        Console.WriteLine()
-        Console.WriteLine("Rules")
-        Console.WriteLine()
-        
-        Console.WriteLine("First select a grid size: the larger the grid, the harder and longer it'll be.")
-        Threading.Thread.Sleep(2000)
-        'maybe figure out how to type text out character by character?
-        Console.WriteLine("Every game, you'll start in the centre of the grid.")
-        Threading.Thread.Sleep(2000)
-        Console.WriteLine("Select a direction using the arrow keys or WASD, and press RETURN to confirm.")
-        Threading.Thread.Sleep(2000)
-        Console.WriteLine("Your distance in small grid squares will be revealed, and your number of turns so far underneath.")
-        Threading.Thread.Sleep(2000)
-        Console.WriteLine("Use this information to select a new square with the same method, and get to the set square.")
-        Threading.Thread.Sleep(2000)
-        Console.WriteLine("tldr; there's a hidden square. go find it in the least turns possible. It's a treasure hunt! :)")
-        Threading.Thread.Sleep(5000)
-        
-        console.WriteLine()
-       
-        Console.WriteLine("Please set the window size to large enough to fit the following line across so the grid works; after, press ANY KEY then RETURN to start.")
-        ' this will be a line, no idea how to handle these exceptions :( can't force except on windows, bad things will happen.
-        
-        Console.Clear() 
-        ' press m at any time to mute music - need that in there later. That's if I ever add music.
-        'Console.WriteLine("Which grid size would you like?")
-        ' add grid size choice
-        
-        elevenByElevenGrid()
         
     End Sub
     
-    Sub ElevenByElevenGrid()
+    Sub RandomElevenByElevenGrid()
         
         
         
@@ -145,6 +140,7 @@ Module Program
             Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
             Console.Write("__")
         ' REMOVE THE ABOVE LATER
+        
         
         dim treasureFound as boolean = false
         Dim moveNumber As Integer = 0
@@ -215,6 +211,12 @@ Module Program
         
       dim firstmove as Boolean = true
       dim triggerMovement as boolean = true  
+        dim seedNumberRandom(2) as Integer
+        
+           seedNumberRandom(1) = trueTreasureLocationLeft * 69
+           seedNumberRandom(2) = trueTreasureLocationTop * 69
+           seedNumberRandom(0) = seedNumberRandom(1) & seedNumberRandom(2)
+        
         
         do until treasureFound = True
             
@@ -235,9 +237,11 @@ Module Program
             numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
             if numberOfSquaresAway = 0 or numberOfSquaresAway = -0 ' ends game
-                for i as Integer = 0 to 999
-                    Console.WriteLine("YOU WIN!")
-                Next
+                    Console.Clear()
+                    Console.WriteLine("level cleared in " & moveNumber & " moves.")
+                Threading.Thread.Sleep(1000)
+                    Console.WriteLine("Want to share the seed with friends?: ") ' & seed
+                ' play again using code from start will invoke same sub
                 End
             End If
             
@@ -254,7 +258,7 @@ Module Program
                 Else 
                     Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway & " "))
             End If
-                 
+                 ' thing will move to 17, seedno will move to 18
                 
             
             ' remove below here
@@ -262,7 +266,9 @@ Module Program
             Console.WriteLine("trueUserLocationTop: " & trueUserLocationTop & " ")
             Console.WriteLine("trueTreasureLocationLeft: " & trueTreasureLocationLeft & " ")
             Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop & " ")
+            
             ' remove above here
+            Console.WriteLine("Seed number: " & seedNumberRandom(0))
             
             userDirection = Console.ReadKey().Key
             
@@ -450,8 +456,65 @@ Module Program
 
     End Sub
     
+    sub SeedElevenByElevenGrid
+        ' remove reset button? add confirmation for restarting game with r?
+        Dim assignedSeedNumberString(1) As String  ' Changed to String since you're storing substrings
+        Dim assignedSeedNumberInteger(1) As Integer
+        Dim seedNumber As String
+        Dim seedOkay As Boolean = False
+
+        Do Until seedOkay
+            Console.WriteLine("Seed? (Enter a 6-digit number)")
+            seedNumber = Console.ReadLine()
+    
+            ' Check if input is numeric and has 6 digits
+            If IsNumeric(seedNumber) AndAlso seedNumber.Length = 6 Then
+                Try
+                    ' Try to parse the first 3 digits
+                    assignedSeedNumberString(0) = seedNumber.Substring(0, 3)
+                    assignedSeedNumberInteger(0) = Integer.Parse(assignedSeedNumberString(0)) / 69
+            
+                    ' Try to parse the last 3 digits
+                    assignedSeedNumberString(1) = seedNumber.Substring(3, 3)
+                    assignedSeedNumberInteger(1) = Integer.Parse(assignedSeedNumberString(1)) / 69
+            
+                    ' If we got here without exceptions, input is valid
+                    seedOkay = True
+                    Console.WriteLine()
+                    Console.WriteLine("Seed accepted!")
+                Catch ex As Exception
+                    Console.WriteLine("Error processing seed. Please try again.")
+                    Console.WriteLine()
+                End Try
+            Else
+                Console.WriteLine("Invalid input. Please enter a 6-digit number.")
+                Console.WriteLine()
+            End If
+        Loop
+        
+        Threading.Thread.Sleep(1000)
+
+
+        if assignedSeedNumberInteger(0) = 0
+            assignedSeedNumberInteger(0) = assignedSeedNumberInteger(0) + 1
+        End If
+        
+        if assignedSeedNumberInteger(1) = 0
+            assignedSeedNumberInteger(1) = assignedSeedNumberInteger(1) + 1
+        End If
+        
+        
+        'Console.WriteLine(assignedSeedNumberinteger(0))
+        'console.WriteLine(assignedSeedNumberInteger(1))
+        
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        
+        Console.ReadLine()
+        
+    End sub
+    
     Function RegenGrid
-        ElevenByElevenGrid()
+        RandomElevenByElevenGrid()
     End Function
     
     
@@ -463,5 +526,5 @@ End Module
 'Console.SetCursorPosition(1, 14)
 'Console.WriteLine("Move number: " & moveNumber)
 'moveNumber = moveNumber + 1
-            
+            ' typing effect for all text???
 'Loop
