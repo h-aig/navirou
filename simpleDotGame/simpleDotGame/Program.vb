@@ -377,21 +377,36 @@ Module Program
             
             Console.WriteLine(hotterOrColder)
             
+            
+            
             numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
             Console.WriteLine("Seed number: " & seedNumberRandom(0))
             
+            if hotterOrColder = "hotter" and firstmove <> true
+                Console.ForegroundColor = ConsoleColor.Red
+                Console.SetCursorPosition(UserLocationLeft - 1, UserLocationTop)
+                Console.Write("__")
+            ElseIf hotterOrColder = "colder" and firstmove <> true
+                Console.ForegroundColor = ConsoleColor.Blue
+                Console.SetCursorPosition(UserLocationLeft - 1, trueUserLocationTop)
+                Console.Write("__")
+            End If
+            
+            if hotterOrColder = "hotter" and firstmove = true
+                Console.ForegroundColor = ConsoleColor.Red
+                Console.SetCursorPosition(UserLocationLeft, UserLocationTop)
+                Console.Write("__")
+            ElseIf hotterOrColder = "colder" and firstmove = true
+                Console.ForegroundColor = ConsoleColor.Blue
+                Console.SetCursorPosition(UserLocationLeft, trueUserLocationTop)
+                Console.Write("__")
+            End If
+            
             userDirection = Console.ReadKey().Key
             
-            if firstmove = true
-                Console.SetCursorPosition(userLocationLeft, userLocationTop)
-                Console.ForegroundColor = ConsoleColor.White
-                Console.Write("__")
-                Else 
-                    Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
-                    Console.ForegroundColor = ConsoleColor.White
-                    Console.Write("__")
-                End If
+            
+            
             
             
             
@@ -473,23 +488,43 @@ Module Program
             
             if firstmove <> true and goingOutOfBounds = false
            Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
-            Console.ForegroundColor = ConsoleColor.Cyan
+                if hotterOrColder = "hotter"
+            Console.ForegroundColor = ConsoleColor.Red
             Console.Write("__")
+                    ElseIf hotterOrColder = "colder"
+                        Console.ForegroundColor = ConsoleColor.Blue
+                        Console.Write("__")
+                        End If
 
                 ElseIf  firstmove = true and userDirection = ConsoleKey.RightArrow 
                     Console.SetCursorPosition(userLocationLeft + 1, userLocationTop)
-                    Console.ForegroundColor = ConsoleColor.Cyan
-                    Console.Write("__")
+                    if hotterOrColder = "hotter"
+                        Console.ForegroundColor = ConsoleColor.Red
+                        Console.Write("__")
+                    ElseIf hotterOrColder = "colder"
+                        Console.ForegroundColor = ConsoleColor.Blue
+                        Console.Write("__")
+                    End If
                     
             ElseIf  firstmove = true and userDirection = ConsoleKey.D
                 Console.SetCursorPosition(userLocationLeft + 1, userLocationTop)
-                Console.ForegroundColor = ConsoleColor.Cyan
-                Console.Write("__")
+                if hotterOrColder = "hotter"
+                    Console.ForegroundColor = ConsoleColor.Red
+                    Console.Write("__")
+                ElseIf hotterOrColder = "colder"
+                    Console.ForegroundColor = ConsoleColor.Blue
+                    Console.Write("__")
+                End If
                     
                     ElseIf  firstmove = true
                         Console.SetCursorPosition(userLocationLeft - 1, userLocationTop)
-                        Console.ForegroundColor = ConsoleColor.Cyan
-                        Console.Write("__")
+                        if hotterOrColder = "hotter"
+                            Console.ForegroundColor = ConsoleColor.Red
+                            Console.Write("__")
+                        ElseIf hotterOrColder = "colder"
+                            Console.ForegroundColor = ConsoleColor.Blue
+                            Console.Write("__")
+                        End If
                     end if 
             
             if firstmove = True  and userDirection = ConsoleKey.RightArrow 
