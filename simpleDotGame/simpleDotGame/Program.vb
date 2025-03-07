@@ -147,6 +147,7 @@ Module Program
         dim userDirection as Integer
         dim goingOutOfBounds as Boolean = false
         dim outOfBoundsPos(1)
+        dim hotterOrColder as string
         
         If treasureLocationLeft = 1 or treasureLocationLeft = 2
             trueTreasureLocationLeft = 1
@@ -258,6 +259,16 @@ Module Program
                 noSquaresAwayTop = trueUserLocationTop - trueTreasureLocationTop
             End If
             
+            if noSquaresAwayLeft + noSquaresAwayTop < numberOfSquaresAway
+                hotterOrColder = "hotter"
+                else if noSquaresAwayLeft + noSquaresAwayTop > numberOfSquaresAway
+                    hotterOrColder = "colder"
+                    ElseIf noSquaresAwayLeft + noSquaresAwayTop = numberOfSquaresAway
+                        
+            End If
+            
+            
+            
             numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
             if numberOfSquaresAway = 0 or numberOfSquaresAway = -0 ' ends game
@@ -356,11 +367,17 @@ Module Program
             Console.ForegroundColor = ConsoleColor.Blue
             Console.SetCursorPosition(1, 15)
             
-            if numberOfSquaresAway > -(numberOfSquaresAway)
-            Console.WriteLine("No. squares away: " &  numberOfSquaresAway & " ")
-                Else 
-                    Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway & " "))
+            if noSquaresAwayLeft + noSquaresAwayTop < numberOfSquaresAway
+                hotterOrColder = "hotter"
+            else if noSquaresAwayLeft + noSquaresAwayTop > numberOfSquaresAway
+                hotterOrColder = "colder"
+            ElseIf noSquaresAwayLeft + noSquaresAwayTop = numberOfSquaresAway
+                
             End If
+            
+            Console.WriteLine(hotterOrColder)
+            
+            numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
             Console.WriteLine("Seed number: " & seedNumberRandom(0))
             
@@ -510,11 +527,16 @@ Module Program
             
                 Console.SetCursorPosition(1, 15)
                 
-            if numberOfSquaresAway > -(numberOfSquaresAway)
-                Console.WriteLine("No. squares away: " &  numberOfSquaresAway)
-            Else 
-                Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway))
+            if noSquaresAwayLeft + noSquaresAwayTop < numberOfSquaresAway
+                hotterOrColder = "hotter"
+                else if noSquaresAwayLeft + noSquaresAwayTop > numberOfSquaresAway
+                    hotterOrColder = "colder"
+                    ElseIf noSquaresAwayLeft + noSquaresAwayTop = numberOfSquaresAway
+                        
             End If
+                
+            
+            numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
                 
                 
             
