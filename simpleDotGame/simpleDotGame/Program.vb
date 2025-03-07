@@ -5,12 +5,14 @@ Imports System.Threading
 
 
 Module Program
+    
     Sub Main(args As String())
         
         
         dim menuOption as Integer
         dim modeSelector as string = "> start from random seed"
         
+        Console.ForegroundColor = ConsoleColor.White
         
         Console.WriteLine("navirou")
         Console.WriteLine()
@@ -75,8 +77,6 @@ Module Program
                 seedElevenByElevenGrid()
         End If
         
-        
-        
     End Sub
     
     Sub RandomElevenByElevenGrid()
@@ -86,7 +86,6 @@ Module Program
         
         
         Console.ForegroundColor = ConsoleColor.White
-        'sound effects whilst building grid?
         
         console.WriteLine()
         Console.Write(" ")
@@ -95,7 +94,6 @@ Module Program
             Console.Write("__")
             Threading.Thread.Sleep(10)
             Console.Write("|")
-        ' wanted to add audio here + during game but the symbol couldn't be resolved for some reason :`(
             
         Next
             Console.WriteLine()
@@ -130,16 +128,9 @@ Module Program
                 Else 
                     treasureLocationOkay = false
             End If
-           
-          '  if treasureLocationLeft mod 3 = 0 
-           '     treasureLocationOkay = False
-            'End If
                 
             loop
         
-            Console.SetCursorPosition(treasureLocationLeft, treasureLocationTop)
-            Console.Write("__")
-        ' REMOVE THE ABOVE LATER
         
         
         dim treasureFound as boolean = false
@@ -212,11 +203,44 @@ Module Program
       dim firstmove as Boolean = true
       dim triggerMovement as boolean = true  
         dim seedNumberRandom(2) as Integer
+        dim leftZeroFiller as Integer = 0
+        dim topZeroFiller as Integer = 0
         
            seedNumberRandom(1) = trueTreasureLocationLeft * 69
-           seedNumberRandom(2) = trueTreasureLocationTop * 69
+        seedNumberRandom(2) = trueTreasureLocationTop * 69
+        
+        ' the following code checks whether the seed for a given axis is a 2 digit number. it will be if one of the locations are 0.
+        ' it adds an extra 0 where needed, whist the last 2 digits of the seed now mean when the seed is parsed, it
+        ' knows when 690 = 690 and when 690 is actually 69 but aligned to fit the seed requirements.
+        
+        if seedNumberRandom(1).ToString().Length = 2
+            seedNumberRandom(1) = seedNumberRandom(1) & 0
+            leftZeroFiller = 1
+        End If
+        
+        if seedNumberRandom(2).ToString().Length = 2
+           seedNumberRandom(2) = seedNumberRandom(2) & 0
+            topZeroFiller = 1
+            End If
+        
+        
            seedNumberRandom(0) = seedNumberRandom(1) & seedNumberRandom(2)
         
+        if leftZeroFiller = 1 AndAlso topZeroFiller = 1
+            seedNumberRandom(0) = seedNumberRandom(0) & 1 & 1
+        End If
+        
+        if leftZeroFiller = 0 AndAlso topZeroFiller = 1
+            seedNumberRandom(0) = seedNumberRandom(0) & 0 & 1
+        End If
+        
+        if leftZeroFiller = 1 AndAlso topZeroFiller = 0
+            seedNumberRandom(0) = seedNumberRandom(0) & 1 & 0
+        End If
+        
+        if leftZeroFiller = 0 AndAlso topZeroFiller = 0
+            seedNumberRandom(0) = seedNumberRandom(0) & 0 & 0
+        End If
         
         do until treasureFound = True
             
@@ -237,12 +261,91 @@ Module Program
             numberOfSquaresAway = noSquaresAwayLeft + noSquaresAwayTop
             
             if numberOfSquaresAway = 0 or numberOfSquaresAway = -0 ' ends game
+                
+                console.ForegroundColor = ConsoleColor.White
+                
+                dim menuoption ' bad practice to use same variable names but oh well (it's 12:28am)
+                dim modeSelector as string = "> no"
                     Console.Clear()
                     Console.WriteLine("level cleared in " & moveNumber & " moves.")
                 Threading.Thread.Sleep(1000)
-                    Console.WriteLine("Want to share the seed with friends?: ") ' & seed
-                ' play again using code from start will invoke same sub
-                End
+                    Console.WriteLine("Want to share the seed with friends?: " & seedNumberRandom(0).ToString()) 
+                Threading.Thread.Sleep(1000)
+                Console.WriteLine()
+                Console.WriteLine("Play again?")
+                Console.WriteLine()
+        Console.WriteLine("yes")
+        Console.WriteLine("> no")
+        
+        do 
+            
+            menuoption = Console.ReadKey().Key
+            
+            if menuOption = ConsoleKey.UpArrow or menuOption = ConsoleKey.W
+                
+                if Console.CursorTop = 6 
+                    Console.Clear()
+                    Console.WriteLine("level cleared in " & moveNumber & " moves.")
+                    Console.WriteLine("Want to share the seed with friends?: " & seedNumberRandom(0).ToString()) 
+                    Console.WriteLine()
+                    Console.WriteLine("Play again?")
+                    Console.WriteLine()
+                    Console.WriteLine("yes")
+                    Console.WriteLine("> no")
+                    Console.SetCursorPosition(0, 7)
+                    modeSelector = "> no"
+                elseif Console.CursorTop = 7 
+                    Console.Clear()
+                    Console.WriteLine("level cleared in " & moveNumber & " moves.")
+                    Console.WriteLine("Want to share the seed with friends?: " & seedNumberRandom(0).ToString()) 
+                    Console.WriteLine()
+                    Console.WriteLine("Play again?")
+                    Console.WriteLine()
+                    Console.WriteLine("> yes")
+                    Console.WriteLine("no")
+                    Console.SetCursorPosition(0, 6)
+                    modeSelector = "> yes"
+                End If
+        
+            End If
+            
+            if menuOption = ConsoleKey.DownArrow or menuOption = ConsoleKey.S
+                
+                if Console.CursorTop = 6 
+                    Console.Clear()
+                    Console.WriteLine("level cleared in " & moveNumber & " moves.")
+                    Console.WriteLine("Want to share the seed with friends?: " & seedNumberRandom(0).ToString()) 
+                    Console.WriteLine()
+                    Console.WriteLine("Play again?")
+                    Console.WriteLine()
+                    Console.WriteLine("yes")
+                    Console.WriteLine("> no")
+                    Console.SetCursorPosition(0, 7)
+                    modeSelector = "> no"
+                ElseIf Console.CursorTop = 7 
+                    Console.Clear()
+                    Console.WriteLine("level cleared in " & moveNumber & " moves.")
+                    Console.WriteLine("Want to share this seed with friends?: " & seedNumberRandom(0).ToString()) 
+                    Console.WriteLine()
+                    Console.WriteLine("Play again?")
+                    Console.WriteLine()
+                    Console.WriteLine("> yes")
+                    Console.WriteLine("no")
+                    Console.SetCursorPosition(0, 6)
+                    modeSelector = "> yes"
+                End If
+        
+            End If
+            
+        loop until menuOption = ConsoleKey.Enter
+                
+        if modeSelector = "> yes"
+            Console.Clear()
+            PlayAgain()
+            ElseIf modeSelector = "> no"
+                end
+            End If
+                
             End If
             
             Console.ForegroundColor = ConsoleColor.cyan
@@ -258,16 +361,7 @@ Module Program
                 Else 
                     Console.WriteLine("No. squares away: " &  -(numberOfSquaresAway & " "))
             End If
-                 ' thing will move to 17, seedno will move to 18
-                
             
-            ' remove below here
-            Console.WriteLine("trueUserLocationLeft: " & trueUserLocationLeft & " ")
-            Console.WriteLine("trueUserLocationTop: " & trueUserLocationTop & " ")
-            Console.WriteLine("trueTreasureLocationLeft: " & trueTreasureLocationLeft & " ")
-            Console.WriteLine("trueTreasureLocationTop: " & trueTreasureLocationTop & " ")
-            
-            ' remove above here
             Console.WriteLine("Seed number: " & seedNumberRandom(0))
             
             userDirection = Console.ReadKey().Key
@@ -432,15 +526,15 @@ Module Program
                 Console.SetCursorPosition(outOfBoundsPos(0) - 2, outOfBoundsPos(1))
                 Console.WriteLine("__")
                 
-                Console.SetCursorPosition(1, 20) ' change this to 17 after removing debugging outputs
+                Console.SetCursorPosition(1, 18) 
                 Console.ForegroundColor = ConsoleColor.Red
                 Console.WriteLine("That move would take you out of bounds! Inputs frozen for 1s (stackable with further inputs)!") 'anyone know how to make it precise?
                 Threading.Thread.Sleep(1000)
-                Console.SetCursorPosition(1, 20) ' change this as well!
+                Console.SetCursorPosition(1, 18) 
                 Console.WriteLine("                                                                         ")
                 
                 moveNumber = moveNumber - 1
-                ' beep boop incorrect noise??
+                
                 goingOutOfBounds = false
             End If
             
@@ -464,12 +558,13 @@ Module Program
         Dim seedOkay As Boolean = False
 
         Do Until seedOkay
-            Console.WriteLine("Seed? (Enter a 6-digit number)")
+            Console.WriteLine("Seed? (Enter an 8-digit number)")
             seedNumber = Console.ReadLine()
     
             ' Check if input is numeric and has 6 digits
-            If IsNumeric(seedNumber) AndAlso seedNumber.Length = 6 Then
+            If IsNumeric(seedNumber) AndAlso seedNumber.Length = 8 Then
                 Try
+                    ' need to add ifs with the last 2 digits and whether to disregard
                     ' Try to parse the first 3 digits
                     assignedSeedNumberString(0) = seedNumber.Substring(0, 3)
                     assignedSeedNumberInteger(0) = Integer.Parse(assignedSeedNumberString(0)) / 69
@@ -495,7 +590,7 @@ Module Program
         Threading.Thread.Sleep(1000)
 
 
-        if assignedSeedNumberInteger(0) = 0
+        if assignedSeedNumberInteger(0) = 0 ' if the seed is 0 then add one to form a valid number
             assignedSeedNumberInteger(0) = assignedSeedNumberInteger(0) + 1
         End If
         
@@ -503,9 +598,6 @@ Module Program
             assignedSeedNumberInteger(1) = assignedSeedNumberInteger(1) + 1
         End If
         
-        
-        'Console.WriteLine(assignedSeedNumberinteger(0))
-        'console.WriteLine(assignedSeedNumberInteger(1))
         
         '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         
@@ -517,14 +609,78 @@ Module Program
         RandomElevenByElevenGrid()
     End Function
     
+    sub PlayAgain()
+        dim menuOption as Integer
+        dim modeSelector as string = "> start from random seed"
+        
+        
+        Console.WriteLine("navirou")
+        Console.WriteLine()
+        Console.WriteLine("import level from seed")
+        Console.WriteLine("> start from random seed")
+        
+        do 
+            
+            menuoption = Console.ReadKey().Key
+            
+            if menuOption = ConsoleKey.UpArrow or menuOption = ConsoleKey.W
+                
+                if Console.CursorTop = 3 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("import level from seed")
+                    Console.WriteLine("> start from random seed")
+                    Console.SetCursorPosition(0, 4)
+                    modeSelector = "> start from random seed"
+                elseif Console.CursorTop = 4 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("> import level from seed")
+                    Console.WriteLine(" start from random seed")
+                    Console.SetCursorPosition(0, 3)
+                    modeSelector = "> import level from seed"
+                End If
+        
+            End If
+            
+            if menuOption = ConsoleKey.DownArrow or menuOption = ConsoleKey.S
+                
+                if Console.CursorTop = 3 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("import level from seed")
+                    Console.WriteLine("> start from random seed")
+                    Console.SetCursorPosition(0, 4)
+                    modeSelector = "> start from random seed"
+                ElseIf Console.CursorTop = 4 
+                    Console.Clear()
+                    Console.WriteLine("navirou")
+                    Console.WriteLine()
+                    Console.WriteLine("> import level from seed")
+                    Console.WriteLine(" start from random seed")
+                    Console.SetCursorPosition(0, 3)
+                    modeSelector = "> import level from seed"
+                End If
+        
+            End If
+            
+        loop until menuOption = ConsoleKey.Enter
+        
+        if modeSelector = "> start from random seed"
+            Console.Clear()
+            RandomelevenByElevenGrid()
+            ElseIf modeSelector = "> import level from seed"
+                Console.Clear()
+                seedElevenByElevenGrid()
+        End If
+    End sub
     
 End Module
 
-' I should add a timer lol do until treasureFound = True
-            
-'Console.ForegroundColor = ConsoleColor.cyan
-'Console.SetCursorPosition(1, 14)
-'Console.WriteLine("Move number: " & moveNumber)
-'moveNumber = moveNumber + 1
-            ' typing effect for all text???
-'Loop
+' I should add a timer but i don't know how to do parallel ops
+' all sounds broken and cba its 12:24am
+' thanks for reading this far :)
+' ever heard melt session #1 by denzel curry? maybe you should!
