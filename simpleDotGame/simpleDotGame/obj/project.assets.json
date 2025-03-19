@@ -146,15 +146,7 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-            "version": "[9.0.3, 9.0.3]"
-          },
-          {
             "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[9.0.3, 9.0.3]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.osx-x64",
             "version": "[9.0.3, 9.0.3]"
           }
         ],
