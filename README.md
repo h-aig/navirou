@@ -5,13 +5,13 @@ https://github.com/user-attachments/assets/cb1dfdae-9f79-42af-bd90-f9241b645c9a
 
 ## 📥 Installation  
 
-You'll need the .NET runtime to run VB.NET projects in the terminal.  
+You'll need the .NET runtime to run this VB.NET game in the terminal.  
 
 ### Option 1: No .NET Runtime Installed?  
-Download the **self-contained app** (≈70MB) for your OS.  
+Download the **self-contained game** (≈70MB) for your OS.  
 
 ### Option 2: Already Have .NET Installed?  
-Download the **lightweight app** (≈100KB).  
+Download the **lightweight game** (≈100KB).  
 
 #### Manually Installing .NET Runtime (if you want to run the lightweight app)  
 1. Go to [Microsoft .NET 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).  
